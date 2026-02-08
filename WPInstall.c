@@ -89,7 +89,22 @@ if (fSample && fConfig) {
 } else {
     printf("Erreur : Impossible de configurer wp-config.php.\n");
 }
+char adminUser[] = "admin";
+char adminPass[] = "MonMotDePasseFort123!";
+char adminEmail[] = "stephanebrisse@gmail.com";
+char siteTitle[] = "Mon Nouveau Site WordPress";
 
+printf("Installation du coeur de WordPress via WP-CLI...\n");
+
+snprintf(Commande, sizeof(Commande), 
+    "php C:\\WP_CLI\\wp-cli.phar core install --path=\"%s\" --url=\"localhost/Defi_Web/%s\" --title=\"%s\" --admin_user=\"%s\" --admin_password=\"%s\" --admin_email=\"%s\"", 
+    CheminComplet, NomDossier, siteTitle, adminUser, adminPass, adminEmail);
+
+if (system(Commande) == 0) {
+    printf("Succes : WordPress a ete installe avec l'administrateur '%s'.\n", adminUser);
+} else {
+    printf("Erreur : WP-CLI n'a pas pu finaliser l'installation.\n");
+}
     char url[512];
     snprintf(url, sizeof(url), "start http://localhost/Defi_Web/%s", NomDossier);
     system(url);

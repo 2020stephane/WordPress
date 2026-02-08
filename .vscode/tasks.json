@@ -28,7 +28,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "-lgdi32",
-                "-luser32",                
+                "-luser32",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
